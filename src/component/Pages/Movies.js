@@ -1,13 +1,6 @@
 import { Component } from 'react';
 import '../../css/moviepage.css';
 import moviedatalist from '../sub-component/movielist';
-import Paper from '@material-ui/core/Paper';
-import Chip from '@material-ui/core/Chip';
-import { Grid } from '@material-ui/core';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 class Movies extends Component{
@@ -189,10 +182,12 @@ class Movies extends Component{
     functionChipLabelArray=(e)=>{
         const ChipLabelArray = ["Animated","Historical","Biographical","Documentary","Silent","Comedy"];
         return(
-             <section>
+             <section  style={{paddingTop:'1%'}}>
                    {    ChipLabelArray.map((item,key)=>{
                                     return(
-                                        <Chip id={item} key={key} label={item} className={item} onClick={(e)=>this.handleOnClickChip(e,item)} style={{marginTop:'1vh',marginLeft:'1vw'}}/> 
+                                        <button id={item} key={key} label={item} className={item} onClick={(e)=>this.handleOnClickChip(e,item)} style={{marginTop:'1vh',marginLeft:'1vw',width:'fit-content',backgroundColor:'grey',borderRadius:'15%'}}>
+                                          {item}
+                                        </button> 
                                     )
                                 })
                     }
@@ -205,16 +200,22 @@ class Movies extends Component{
         const ChipLabelArray = ["Animated","Historical","Biographical","Documentary","Silent","Comedy"];
         return(
              <section>
-
-                   {    ChipLabelArray.map((item,key)=>{
+                 <table>
+                     <tbody>
+                     {    ChipLabelArray.map((item,key)=>{
                                     return(
-                                        <div key={key}>
-                                            {item}
-                                        <input id={"Chip_"+item}  type="checkbox" name={item} value={this.state.Checktype} className={"Chip_"+item} onClick={(e)=>this.handleOnCheck_MovieType(e,item)} /> 
-                                        </div>
+                                        <tr key={key}>
+                                           <td> {item} </td>
+                                        <td> <input id={"Chip_"+item}  type="checkbox" name={item} value={this.state.Checktype} className={"Chip_"+item} onClick={(e)=>this.handleOnCheck_MovieType(e,item)} /> 
+                                         </td>
+                                        </tr>
                                         )
                                 })
                     }
+                     </tbody>
+                  </table>
+
+                  
              </section>
         )
     }
@@ -223,18 +224,23 @@ class Movies extends Component{
         const DateLabelArray = ["Today","Tomorrow","This Weekend"];
         return(
                             <section>
-                                <div>
+                                <table>
+                                    <tbody>
                                     {
                                         DateLabelArray.map((item,key)=>{
                                             return(
-                                                <div key={key}>
-                                                {item}
-                                                <input id={"Checkbox"+item} type="checkbox" className={"Checkbox"+item} name={item} value={this.state.CheckDate} onChange={(e)=>this.handleCheckboxDate(e,item)} /> 
-                                                </div>
+                                                <tr key={key}>
+                                                <td>{item} </td>
+                                                <td> <input id={"Checkbox"+item} type="checkbox" className={"Checkbox"+item} name={item} value={this.state.CheckDate} onChange={(e)=>this.handleCheckboxDate(e,item)} /> 
+                                                </td>
+                                                </tr>
                                             )
                                         })
                                     }
-                                </div>
+                                    </tbody>
+                                </table>
+                                    
+                               
                             </section>
        
         )
@@ -245,18 +251,23 @@ class Movies extends Component{
         const Language = ["Hindi","English","Kannada","Gujarati","Telugu","Urdu","Malayalam"];
         return(
             <section>
-              <div>
+              <table>
+                  <tbody>
                   {
                       Language.map((item,key)=>{
                           return(
-                              <div key={key}>
-                              {item}
-                              <input id={"Checkbox"+item} type="checkbox" className={"Checkbox"+item} name={item} value={this.state.CheckLanguage} onChange={(e)=>this.handleLanguageChange(e,item)} /> <br/>
-                              </div>
+                              <tr key={key}>
+                               <td>{item} </td>
+                               <td> <input id={"Checkbox"+item} type="checkbox" className={"Checkbox"+item} name={item} value={this.state.CheckLanguage} onChange={(e)=>this.handleLanguageChange(e,item)} /> <br/>
+                                </td>
+                              </tr>
                           )
                       })
                   }
-              </div>
+                  </tbody>
+              </table>
+            
+            
           </section>
         )
     }
@@ -265,20 +276,23 @@ class Movies extends Component{
         const Price = ["Free","0-500","501-2000","Above 2000"];
         return(
             <section>
-                <div>
+                <table>
+                    <tbody>
                     {
                         Price.map((item,key)=>{
                             return(
                              
-                              <div key={key}>
-                              {item}
-                              <input id={"Checkbox"+item} type="checkbox" className={"Checkbox"+item} name={item} value={this.state.CheckPrice} onChange={(e)=>this.handlePriceChange(e,item)} /> <br/>
-                              </div>
+                              <tr key={key}>
+                                <td>{item} </td>
+                                 <td> <input id={"Checkbox"+item} type="checkbox" className={"Checkbox"+item} name={item} value={this.state.CheckPrice} onChange={(e)=>this.handlePriceChange(e,item)} /> <br/>
+                                   </td>
+                              </tr>
                             
                             )
                         })
                     }
-                </div>
+                    </tbody>
+                </table>   
             </section>
         )
     }
@@ -287,20 +301,25 @@ class Movies extends Component{
         const MoreFilter = ["Online Streaming","Kids Allowed","Free Food"];
         return(
             <section>
-                <div>
-                    {
+               <table>
+                   <tbody>
+                   {
                         MoreFilter.map((item,key)=>{
                             return(
                              
-                              <div key={key}>
-                              {item}
-                              <input id={"Checkbox"+item} type="checkbox" className={"Checkbox"+item} name={item} value={this.state.CheckMoreFilter} onChange={(e)=>this.handleMoreFilterChange(e,item)} /> <br/>
-                              </div>
+                              <tr key={key}>
+                              <td> {item} </td>
+                               <td> <input id={"Checkbox"+item} type="checkbox" className={"Checkbox"+item} name={item} value={this.state.CheckMoreFilter} onChange={(e)=>this.handleMoreFilterChange(e,item)} /> <br/>
+                               </td>
+                               </tr>
                             
                             )
                         })
                     }
-                </div>
+                   </tbody>
+               </table>
+                
+              
             </section>  
         )
     }
@@ -319,94 +338,110 @@ class Movies extends Component{
     renderDisplay=()=>{
         // console.log("moviedatalist====",this.state.moviedatalist)
           return(
-              <div style={{position:'relative',top:'5%'}}>
-                <Grid item container direction="row"> 
-                  {
-                      
-                 this.state.moviedatalist.map((item,key)=>{
-                    return( 
-                         <Grid item xs={3} key={key} className="movielistcontent">
-                                  <img src={item.img} className="movie-list-of-poster" alt="img"/><br/>
-                                  <b>{item.movie_name}</b><br/>
-                                   Type: {item.type}<br/>
-                                   Date: {item.date.map((Ditem,Dindex)=>{
-                                         return " "+Ditem+" "
-                                   })}<br/>
-                                    Language: {item.Language.map((Litem,Lindex)=>{
-                                         return " "+Litem+" "
-                                   })}<br/>
-                                   Price:{item.Cost}<br/>
-                                   Rating:{item.Rate}<br/>
-                                   <span style={{color:'red'}}>Special Offer</span> : {item.MoreFilter}<br/><br/>
-                          </Grid> 
-                         ) 
-                      })
-                      
-                  }
-                       </Grid>
+              <div>
+                  <table>
+                      <tbody>
+                         <tr style={{display:'block'}}>
+                         
+                          {   this.state.moviedatalist.map((item,key)=>{
+                                     key = key +1
+                                 
+                                 return( 
+                              
+                                        <td className={key%8==0?"break":""} style={{paddingTop:"5%"}}>
+                                     
+                                            
+                                            <img src={item.img} className="movie-list-of-poster" alt="img"/><br/>
+                                            <b>{item.movie_name}</b><br/>
+                                            Type: {item.type}<br/>
+                                            Date: {item.date.map((Ditem,Dindex)=>{
+                                                    return " "+Ditem+" "
+                                            })}<br/>
+                                                Language: {item.Language.map((Litem,Lindex)=>{
+                                                    return " "+Litem+" "
+                                            })}<br/>
+                                            Price:{item.Cost}<br/>
+                                            Rating:{item.Rate}<br/>
+                                            <span style={{color:'red'}}>Special Offer</span> : {item.MoreFilter}<br/><br/>
+                                      
+                                        
+                                         </td>
+                                    
+                                 )
+                               
+                                
+                            })}
+
+                             
+                            </tr>
+                         
+                      </tbody>
+                  </table>
               </div>
           )        
     }
 
+
     render(){
         return(
             <div> 
-                <Grid container style={{height:'70vh'}}>
-                    <Grid item xs="2"> 
-                      <Paper className="movie_filter_box">
-                       <h3> Filter </h3>
-                        <Accordion>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                Date
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            {this.functionCheckBoxDate()} <br/>
-                            </AccordionDetails>
-                        </Accordion>
 
-                        <Accordion>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                Movie Type
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            {this.functionMovieType()}<br/>
-                            </AccordionDetails>
-                        </Accordion>
+              <table>
+                  <tbody>
+                      <tr>
 
-                        <Accordion>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                            Language
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            {this.functionLanguageSelect()} <br/>
-                            </AccordionDetails>
-                        </Accordion>
 
-                        <Accordion>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                Cost
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            {this.functionPrice()}<br/>
-                            </AccordionDetails>
-                        </Accordion>
+                          <td style={{width:'12vw',paddingTop:'9%'}}>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        {/* <th> <h3> Filter </h3> </th> */}
+                                    </tr>
+                                    <tr>
+                                        <td style={{paddingLeft:'2%'}}>
+                                                <h4> Date </h4>
+                                                {this.functionCheckBoxDate()} <br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <h4> Movie Type </h4>
+                                                {this.functionMovieType()}<br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <h4>  Language </h4>
+                                                {this.functionLanguageSelect()} <br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <h4>  Cost </h4>
+                                                {this.functionPrice()}<br/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <h4>  More Filter </h4>
+                                                {this.functionMoreFilter()}<br/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        <Accordion>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                More Filter
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            {this.functionMoreFilter()}<br/>
-                            </AccordionDetails>
-                        </Accordion>           
-                      </Paper>
-                    </Grid>
+                          </td>
 
-                    <Grid item xs="10" style={{position:'relative'}}> 
-                         {this.functionChipLabelArray()} 
-                         {this.renderDisplay()}
-                    </Grid>
-               </Grid>
+
+                          <td style={{display:'block'}}>
+                                {this.functionChipLabelArray()} 
+                                {this.renderDisplay()}
+                          </td>
+
+
+                      </tr>
+                  </tbody>
+              </table>  
             </div>
         )
     }

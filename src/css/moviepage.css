@@ -14,3 +14,9 @@
     font-family: sans-serif;
     font-size: 0.9rem;
 }
+
+td.break{
+    float: left;
+    line-height: 22px;
+   
+}
